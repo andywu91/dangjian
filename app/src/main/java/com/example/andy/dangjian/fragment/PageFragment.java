@@ -1,5 +1,6 @@
 package com.example.andy.dangjian.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -7,7 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.andy.dangjian.ImproveUserInfoActivity;
+import com.example.andy.dangjian.LoginActivity;
 import com.example.andy.dangjian.R;
+import com.example.andy.dangjian.RegisterActivity;
 
 /**
  * Created by Andy on 2016/9/21.
@@ -36,6 +40,24 @@ public class PageFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_page, container, false);
         TextView textView = (TextView) view.findViewById(R.id.textview);
         textView.setText("Fragment #" + mPage);
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mPage == 1) {
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                } else if (mPage == 2) {
+                    Intent intent = new Intent(getActivity(), RegisterActivity.class);
+                    startActivity(intent);
+                } else if (mPage == 3) {
+                    Intent intent = new Intent(getActivity(), ImproveUserInfoActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+
         return view;
     }
 }
