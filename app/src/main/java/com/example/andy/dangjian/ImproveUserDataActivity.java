@@ -16,9 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ImproveUserInfoActivity extends AppCompatActivity {
+public class ImproveUserDataActivity extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -104,8 +105,25 @@ public class ImproveUserInfoActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_improve_user_info, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            TextView textView = (TextView) rootView.findViewById(R.id.operatino_identity_textview);
+            ImageView imageView = (ImageView) rootView.findViewById(R.id.operation_identity_imageview);
+
+            switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
+                case 1:
+                    textView.setText("身份证信息");
+                    imageView.setBackgroundResource(R.drawable.identity_card_info);
+                    break;
+                case 2:
+                    textView.setText("个人信息");
+                    imageView.setBackgroundResource(R.drawable.user_info_improve);
+                    break;
+                case 3:
+                    textView.setText("个人信息");
+                    imageView.setBackgroundResource(R.drawable.user_info_improve);
+                    break;
+                default:
+            }
+
             return rootView;
         }
     }
