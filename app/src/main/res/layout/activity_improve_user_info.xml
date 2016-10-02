@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
@@ -34,7 +33,7 @@
                     android:layout_centerVertical="true"
                     android:text="返回"
                     android:textColor="@color/white"
-                    android:textSize="18dp"/>
+                    android:textSize="18dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -43,7 +42,7 @@
                     android:gravity="center"
                     android:text="资质审核"
                     android:textColor="@color/white"
-                    android:textSize="24dp"/>
+                    android:textSize="24dp" />
 
             </RelativeLayout>
 
@@ -62,35 +61,39 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="80dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
+                android:id="@+id/viewpager_1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="110dp"
-                android:textColor="@color/white"
+                android:background="@drawable/oval_bg"
                 android:gravity="center"
-                android:background="@drawable/oval_bg"/>
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="24dp" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/viewpager_2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
                 android:text="2"
                 android:textColor="@color/white"
-                android:layout_marginLeft="20dp"
-                android:gravity="center"
-                android:background="@drawable/oval_bg"/>
+                android:textSize="24dp" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="3"
-                android:textColor="@color/white"
+                android:id="@+id/viewpager_3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:gravity="center"
-                android:background="@drawable/oval_bg"/>
+                android:text="3"
+                android:textColor="@color/white"
+                android:textSize="24dp" />
 
         </LinearLayout>
 
@@ -98,7 +101,7 @@
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     </LinearLayout>
 

@@ -97,14 +97,18 @@
 
         </RelativeLayout>
 
-        <ImageView
+        <TextView
             android:id="@+id/login"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="40dp"
             android:layout_below="@+id/input_layout"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:src="@drawable/login"/>
+            android:text="登录"
+            android:textSize="24dp"
+            android:gravity="center"
+            android:background="@drawable/rounded_rect"/>
 
         <TextView
             android:id="@+id/forget_pwd"

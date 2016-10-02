@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/gray"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
                 android:layout_centerVertical="true"
                 android:text="返回"
                 android:textColor="@color/white"
-                android:textSize="18dp"/>
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
                 android:gravity="center"
                 android:text="首页"
                 android:textColor="@color/white"
-                android:textSize="24dp"/>
+                android:textSize="24dp" />
 
         </RelativeLayout>
 
@@ -45,7 +45,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/login_avatar"/>
+            android:background="@drawable/login_avatar" />
 
     </LinearLayout>
 
@@ -68,14 +68,14 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/course"/>
+                android:background="@drawable/home_page_icon1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="学院简介"
-                android:textSize="14dp"/>
+                android:textSize="14dp" />
 
         </LinearLayout>
 
@@ -89,16 +89,14 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/oval_bg"
-                android:src="@drawable/search"
-                />
+                android:background="@drawable/home_page_icon2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="学院简介"
-                android:textSize="14dp"/>
+                android:textSize="14dp" />
 
         </LinearLayout>
 
@@ -112,14 +110,14 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/message"/>
+                android:background="@drawable/home_page_icon3" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="学院简介"
-                android:textSize="14dp"/>
+                android:textSize="14dp" />
 
         </LinearLayout>
 
@@ -133,14 +131,14 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/personal_center"/>
+                android:background="@drawable/home_page_icon4" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="学院简介"
-                android:textSize="14dp"/>
+                android:textSize="14dp" />
 
         </LinearLayout>
 
@@ -154,14 +152,14 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/help"/>
+                android:background="@drawable/home_page_icon5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="学院简介"
-                android:textSize="14dp"/>
+                android:textSize="14dp" />
 
         </LinearLayout>
 
@@ -171,8 +169,8 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="5dp"
-        android:orientation="vertical"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -185,28 +183,27 @@
                 android:id="@+id/article_icon"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/course"/>
+                android:background="@drawable/course" />
 
             <TextView
                 android:id="@+id/article_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/article_icon"
                 android:text="测试文字"
-                android:textSize="18dp"
-                android:layout_toRightOf="@id/article_icon"/>
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="小标题文字测试小标题文字测试"
-                android:textSize="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@id/article_icon"
                 android:layout_below="@id/article_title"
-                />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/article_icon"
+                android:text="小标题文字测试小标题文字测试"
+                android:textSize="16dp" />
 
 
         </RelativeLayout>
@@ -216,7 +213,7 @@
             android:layout_height="2dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/dash_bg"/>
+            android:background="@drawable/dash_bg" />
 
 
         <RelativeLayout
@@ -230,28 +227,27 @@
                 android:id="@+id/article_icon2"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/course"/>
+                android:background="@drawable/course" />
 
             <TextView
                 android:id="@+id/article_title2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/article_icon2"
                 android:text="测试文字"
-                android:textSize="18dp"
-                android:layout_toRightOf="@id/article_icon2"/>
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="小标题文字测试小标题文字测试"
-                android:textSize="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@id/article_icon2"
                 android:layout_below="@id/article_title2"
-                />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/article_icon2"
+                android:text="小标题文字测试小标题文字测试"
+                android:textSize="16dp" />
 
 
         </RelativeLayout>

@@ -38,7 +38,7 @@ public class PageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = null;
+        View view;
         if(mPage == 5){
             view = inflater.inflate(R.layout.personal_center_fragment,container,false);
         }else if(mPage == 1){
@@ -46,24 +46,6 @@ public class PageFragment extends Fragment {
         }else {
             view = inflater.inflate(R.layout.fragment_page, container, false);
 
-            TextView textView = (TextView) view.findViewById(R.id.textview);
-            textView.setText("Fragment #" + mPage);
-
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mPage == 1) {
-                        Intent intent = new Intent(getActivity(), LoginActivity.class);
-                        startActivity(intent);
-                    } else if (mPage == 2) {
-                        Intent intent = new Intent(getActivity(), RegisterActivity.class);
-                        startActivity(intent);
-                    } else if (mPage == 3) {
-                        Intent intent = new Intent(getActivity(), ImproveUserDataActivity.class);
-                        startActivity(intent);
-                    }
-                }
-            });
         }
 
         return view;

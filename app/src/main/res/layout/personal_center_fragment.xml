@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/gray"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
                 android:layout_centerVertical="true"
                 android:text="返回"
                 android:textColor="@color/white"
-                android:textSize="18dp"/>
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
                 android:gravity="center"
                 android:text="个人中心"
                 android:textColor="@color/white"
-                android:textSize="24dp"/>
+                android:textSize="24dp" />
 
         </RelativeLayout>
 
@@ -45,7 +45,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/login_avatar"/>
+            android:background="@drawable/login_avatar" />
 
     </LinearLayout>
 
@@ -53,8 +53,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/rect_bg"
         android:layout_marginTop="10dp"
+        android:background="@drawable/rect_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -62,14 +62,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/course"/>
+            android:background="@drawable/course" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="我的课程"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
 
 
     </LinearLayout>
@@ -86,14 +86,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/course"/>
+            android:background="@drawable/collection" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="我的收藏"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
 
 
     </LinearLayout>
@@ -110,14 +110,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/course"/>
+            android:background="@drawable/user_info" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="个人资料"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
 
 
     </LinearLayout>
@@ -134,14 +134,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/course"/>
+            android:background="@drawable/feedback" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="反馈意见"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
 
 
     </LinearLayout>
@@ -158,14 +158,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/course"/>
+            android:background="@drawable/help" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="帮助"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
 
 
     </LinearLayout>

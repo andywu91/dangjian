@@ -1,6 +1,7 @@
 package com.example.andy.dangjian;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,9 +14,7 @@ import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -37,9 +36,6 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
     MainActivity.FragmentAdapter fragmentAdapter;
 
     Context context;
@@ -52,14 +48,6 @@ public class MainActivity extends AppCompatActivity
         ButterKnife.bind(this);
 
         context = this;
-
-        setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -107,6 +95,21 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.user_info) {
             // Handle the user info action
+        } else if (id == R.id.user_login) {
+
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+
+        } else if (id == R.id.user_register) {
+
+            Intent intent = new Intent(this, RegisterActivity.class);
+            startActivity(intent);
+
+        } else if (id == R.id.user_info_improve) {
+
+            Intent intent = new Intent(this, ImproveUserDataActivity.class);
+            startActivity(intent);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -219,8 +222,8 @@ public class MainActivity extends AppCompatActivity
             ImageView img = (ImageView) view.findViewById(R.id.tab_imageview);
             img.setImageResource(imageResId[position]);
 
-            if(position == 2){
-                img.setBackgroundResource(R.drawable.oval_bg);
+            if (position == 2) {
+                img.setBackgroundResource(R.drawable.oval_bg_padding);
             }
 
             return view;

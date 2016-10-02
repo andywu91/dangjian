@@ -1,7 +1,7 @@
 package com.example.andy.dangjian;
 
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -17,9 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class ImproveUserDataActivity extends AppCompatActivity {
+public class ImproveUserDataActivity extends AppCompatActivity implements View.OnClickListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -36,10 +37,27 @@ public class ImproveUserDataActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    private Context context;
+
+    private TextView viewpage1;
+    private TextView viewpage2;
+    private TextView viewpage3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_improve_user_info);
+
+        context = this;
+
+        viewpage1 = (TextView) findViewById(R.id.viewpager_1);
+        viewpage2 = (TextView) findViewById(R.id.viewpager_2);
+        viewpage3 = (TextView) findViewById(R.id.viewpager_3);
+
+        viewpage1.setOnClickListener(this);
+        viewpage2.setOnClickListener(this);
+        viewpage3.setOnClickListener(this);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,8 +69,55 @@ public class ImproveUserDataActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position){
+                    case 0:
+                        viewpage1.setBackgroundResource(R.drawable.oval_bg);
+                        viewpage2.setBackgroundResource(0);
+                        viewpage3.setBackgroundResource(0);
+                        break;
+                    case 1:
+                        viewpage1.setBackgroundResource(0);
+                        viewpage2.setBackgroundResource(R.drawable.oval_bg);
+                        viewpage3.setBackgroundResource(0);
+                        break;
+                    case 2:
+                        viewpage1.setBackgroundResource(0);
+                        viewpage2.setBackgroundResource(0);
+                        viewpage3.setBackgroundResource(R.drawable.oval_bg);
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.viewpager_1:
+                mViewPager.setCurrentItem(0);
+                break;
+            case R.id.viewpager_2:
+                mViewPager.setCurrentItem(1);
+                break;
+            case R.id.viewpager_3:
+                mViewPager.setCurrentItem(2);
+                break;
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -107,6 +172,7 @@ public class ImproveUserDataActivity extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_improve_user_info, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.operatino_identity_textview);
             ImageView imageView = (ImageView) rootView.findViewById(R.id.operation_identity_imageview);
+            LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.rounded_layout);
 
             switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
                 case 1:
@@ -118,11 +184,37 @@ public class ImproveUserDataActivity extends AppCompatActivity {
                     imageView.setBackgroundResource(R.drawable.user_info_improve);
                     break;
                 case 3:
-                    textView.setText("个人信息");
+                    textView.setText("党员证信息");
                     imageView.setBackgroundResource(R.drawable.user_info_improve);
                     break;
                 default:
             }
+
+            linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent;
+
+                    switch (getArguments().getInt(ARG_SECTION_NUMBER)){
+                        case 1:
+                            intent = new Intent(getActivity(),CredentialUploadActivity.class);
+                            intent.putExtra("Credential","身份证信息");
+                            startActivity(intent);
+                            break;
+                        case 2:
+                            intent = new Intent(getActivity(),UserInfoImproveActivity.class);
+                            startActivity(intent);
+                            break;
+                        case 3:
+                            intent = new Intent(getActivity(),CredentialUploadActivity.class);
+                            intent.putExtra("Credential","党员证信息");
+                            startActivity(intent);
+                            break;
+                    }
+
+                }
+            });
 
             return rootView;
         }

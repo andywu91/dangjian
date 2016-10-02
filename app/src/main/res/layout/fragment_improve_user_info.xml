@@ -2,17 +2,18 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@drawable/login_bg"
               tools:context="com.example.andy.dangjian.ImproveUserDataActivity$PlaceholderFragment">
 
     <LinearLayout
+        android:id="@+id/rounded_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:orientation="vertical"
         android:background="@drawable/rounded_rect"
-        android:gravity="center">
+        android:gravity="center"
+        android:clickable="true">
 
         <TextView
             android:id="@+id/operatino_identity_textview"
