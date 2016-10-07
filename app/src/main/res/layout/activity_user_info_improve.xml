@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_user_info_improve"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/login_bg"
+    android:orientation="vertical"
     tools:context="com.example.andy.dangjian.UserInfoImproveActivity">
 
     <android.support.v7.widget.Toolbar
@@ -24,7 +23,7 @@
                 android:layout_centerVertical="true"
                 android:text="返回"
                 android:textColor="@color/white"
-                android:textSize="18dp"/>
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,7 +32,7 @@
                 android:gravity="center"
                 android:text="个人资料"
                 android:textColor="@color/white"
-                android:textSize="24dp"/>
+                android:textSize="24dp" />
 
         </RelativeLayout>
 
@@ -41,188 +40,146 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
+        android:layout_height="300dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/rounded_rect">
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_rect"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:background="@drawable/rounded_rect_stroke">
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_rect_stroke"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="学习专业"/>
+                android:text="学员姓名" />
 
             <EditText
+                android:id="@+id/student_name_edittext"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="20dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:background="@drawable/rounded_rect_stroke">
+            android:background="@drawable/rounded_rect_stroke"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="毕业时间"/>
+                android:layout_gravity="center_vertical"
+                android:text="性别" />
+
+            <RadioGroup
+                android:id="@+id/student_sex_radiogroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/male_radiobutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="男" />
+
+                <RadioButton
+                    android:id="@+id/female_radiobutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="女" />
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rounded_rect_stroke"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="学历" />
 
             <EditText
+                android:id="@+id/student_education_edittext"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="20dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:background="@drawable/rounded_rect_stroke">
+            android:background="@drawable/rounded_rect_stroke"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="工作单位"/>
+                android:text="地址" />
 
             <EditText
+                android:id="@+id/student_address_edittext"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="20dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:background="@drawable/rounded_rect_stroke">
+            android:background="@drawable/rounded_rect_stroke"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="联系电话"/>
+                android:text="身份证号后六位" />
 
             <EditText
+                android:id="@+id/student_picId_edittext"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:background="@drawable/rounded_rect_stroke">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="邮政编码"/>
-
-            <EditText
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:background="@drawable/rounded_rect_stroke">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="职务"/>
-
-            <EditText
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:background="@drawable/rounded_rect_stroke">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="职阶"/>
-
-            <EditText
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:background="@drawable/rounded_rect_stroke">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="职称"/>
-
-            <EditText
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="20dp" />
 
         </LinearLayout>
 
@@ -230,16 +187,15 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/login"
+        android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:text="提交"
-        android:textSize="24dp"
+        android:background="@drawable/rounded_rect"
         android:gravity="center"
-        android:background="@drawable/rounded_rect"/>
-
+        android:text="提交"
+        android:textSize="24dp" />
 
 
 </LinearLayout>

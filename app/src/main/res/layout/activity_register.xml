@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_register"
     android:layout_width="match_parent"
@@ -24,7 +23,7 @@
                 android:layout_centerVertical="true"
                 android:text="返回"
                 android:textColor="@color/white"
-                android:textSize="18dp"/>
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,7 +32,7 @@
                 android:gravity="center"
                 android:text="注册"
                 android:textColor="@color/white"
-                android:textSize="24dp"/>
+                android:textSize="24dp" />
 
         </RelativeLayout>
 
@@ -42,13 +41,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/login_bg"
-        >
+        android:background="@drawable/login_bg">
 
         <RelativeLayout
             android:id="@+id/input_layout"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
@@ -61,7 +59,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/user"/>
+                android:src="@drawable/user" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -69,7 +67,7 @@
                 android:layout_alignBottom="@id/username_icon"
                 android:layout_marginRight="30dp"
                 android:layout_toRightOf="@id/username_icon"
-                android:hint="请输入你的手机号"/>
+                android:hint="请输入你的手机号" />
 
             <ImageView
                 android:id="@+id/password_icon"
@@ -79,7 +77,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/password"/>
+                android:src="@drawable/password" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -87,7 +85,25 @@
                 android:layout_alignBottom="@id/password_icon"
                 android:layout_marginRight="30dp"
                 android:layout_toRightOf="@id/password_icon"
-                android:hint="请输入你的密码"/>
+                android:hint="请输入你的密码" />
+
+            <ImageView
+                android:id="@+id/confirm_password"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/password_icon"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/password" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/confirm_password"
+                android:layout_marginRight="30dp"
+                android:layout_toRightOf="@id/confirm_password"
+                android:hint="确认密码" />
 
         </RelativeLayout>
 
@@ -97,12 +113,12 @@
             android:layout_height="40dp"
             android:layout_below="@+id/input_layout"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:text="注册"
-            android:textSize="24dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_rect"
             android:gravity="center"
-            android:background="@drawable/rounded_rect"/>
+            android:text="注册"
+            android:textSize="24dp" />
 
         <TextView
             android:id="@+id/forget_pwd"
@@ -113,9 +129,7 @@
             android:layout_marginTop="10dp"
             android:text="注册同意"
             android:textColor="@color/white"
-            android:textSize="18dp"/>
-
-
+            android:textSize="18dp" />
 
 
     </RelativeLayout>

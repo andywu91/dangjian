@@ -2,6 +2,7 @@ package com.example.andy.dangjian;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -20,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class ImproveUserDataActivity extends AppCompatActivity implements View.OnClickListener{
+public class ImproveUserDataActivity extends AppCompatActivity implements View.OnClickListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -77,7 +78,7 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
 
             @Override
             public void onPageSelected(int position) {
-                switch (position){
+                switch (position) {
                     case 0:
                         viewpage1.setBackgroundResource(R.drawable.oval_bg);
                         viewpage2.setBackgroundResource(0);
@@ -106,7 +107,7 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.viewpager_1:
                 mViewPager.setCurrentItem(0);
                 break;
@@ -196,20 +197,26 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
 
                     Intent intent;
 
-                    switch (getArguments().getInt(ARG_SECTION_NUMBER)){
+                    switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
                         case 1:
-                            intent = new Intent(getActivity(),CredentialUploadActivity.class);
-                            intent.putExtra("Credential","身份证信息");
-                            startActivity(intent);
+
+                            intent = new Intent();
+                            intent.setType("image/*");
+                            intent.setAction(Intent.ACTION_GET_CONTENT);
+                            getActivity().startActivityForResult(intent, 1);
+
                             break;
                         case 2:
-                            intent = new Intent(getActivity(),UserInfoImproveActivity.class);
+                            intent = new Intent(getActivity(), UserInfoImproveActivity.class);
                             startActivity(intent);
                             break;
                         case 3:
-                            intent = new Intent(getActivity(),CredentialUploadActivity.class);
-                            intent.putExtra("Credential","党员证信息");
-                            startActivity(intent);
+
+                            intent = new Intent();
+                            intent.setType("image/*");
+                            intent.setAction(Intent.ACTION_GET_CONTENT);
+                            getActivity().startActivityForResult(intent, 3);
+
                             break;
                     }
 
@@ -218,6 +225,23 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
 
             return rootView;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        Intent intent = new Intent(this, CredentialUploadActivity.class);
+
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            intent.putExtra("Credential", "身份证信息");
+        } else if (requestCode == 3 && resultCode == RESULT_OK) {
+            intent.putExtra("Credential", "党员证信息");
+        }
+
+        intent.putExtra("uri", data.getData());
+        startActivity(intent);
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     /**

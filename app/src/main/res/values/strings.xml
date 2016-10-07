@@ -8,9 +8,10 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="user_info">我的信息</string>
+    <string name="user_info">学员信息查询</string>
     <string name="user_login">学员登录</string>
     <string name="user_register">学员注册</string>
     <string name="user_info_improve">完善学员信息</string>
+    <string name="logout">注销</string>
 
 </resources>
