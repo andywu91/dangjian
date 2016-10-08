@@ -2,7 +2,7 @@ package com.example.andy.dangjian;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -81,18 +81,27 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
                 switch (position) {
                     case 0:
                         viewpage1.setBackgroundResource(R.drawable.oval_bg);
+                        viewpage1.setTextColor(ContextCompat.getColor(context, R.color.white));
                         viewpage2.setBackgroundResource(0);
+                        viewpage2.setTextColor(ContextCompat.getColor(context, R.color.black));
                         viewpage3.setBackgroundResource(0);
+                        viewpage3.setTextColor(ContextCompat.getColor(context, R.color.black));
                         break;
                     case 1:
                         viewpage1.setBackgroundResource(0);
+                        viewpage1.setTextColor(ContextCompat.getColor(context, R.color.black));
                         viewpage2.setBackgroundResource(R.drawable.oval_bg);
+                        viewpage2.setTextColor(ContextCompat.getColor(context, R.color.white));
                         viewpage3.setBackgroundResource(0);
+                        viewpage3.setTextColor(ContextCompat.getColor(context, R.color.black));
                         break;
                     case 2:
                         viewpage1.setBackgroundResource(0);
+                        viewpage1.setTextColor(ContextCompat.getColor(context, R.color.black));
                         viewpage2.setBackgroundResource(0);
+                        viewpage2.setTextColor(ContextCompat.getColor(context, R.color.black));
                         viewpage3.setBackgroundResource(R.drawable.oval_bg);
+                        viewpage3.setTextColor(ContextCompat.getColor(context, R.color.white));
                         break;
                 }
             }
@@ -120,27 +129,6 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_improve_user_info, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     /**
      * A placeholder fragment containing a simple view.
@@ -176,17 +164,17 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
             LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.rounded_layout);
 
             switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
-                case 1:
-                    textView.setText("身份证信息");
-                    imageView.setBackgroundResource(R.drawable.identity_card_info);
-                    break;
                 case 2:
+                    textView.setText("身份证信息");
+                    imageView.setBackgroundResource(R.drawable.identitiy_card_icon);
+                    break;
+                case 1:
                     textView.setText("个人信息");
-                    imageView.setBackgroundResource(R.drawable.user_info_improve);
+                    imageView.setBackgroundResource(R.drawable.user_info_icon);
                     break;
                 case 3:
-                    textView.setText("党员证信息");
-                    imageView.setBackgroundResource(R.drawable.user_info_improve);
+                    textView.setText("学历证明");
+                    imageView.setBackgroundResource(R.drawable.user_photo_icon);
                     break;
                 default:
             }
@@ -198,15 +186,13 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
                     Intent intent;
 
                     switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
-                        case 1:
-
+                        case 2:
                             intent = new Intent();
                             intent.setType("image/*");
                             intent.setAction(Intent.ACTION_GET_CONTENT);
-                            getActivity().startActivityForResult(intent, 1);
-
+                            getActivity().startActivityForResult(intent, 2);
                             break;
-                        case 2:
+                        case 1:
                             intent = new Intent(getActivity(), UserInfoImproveActivity.class);
                             startActivity(intent);
                             break;
@@ -232,10 +218,10 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
 
         Intent intent = new Intent(this, CredentialUploadActivity.class);
 
-        if (requestCode == 1 && resultCode == RESULT_OK) {
+        if (requestCode == 2 && resultCode == RESULT_OK) {
             intent.putExtra("Credential", "身份证信息");
         } else if (requestCode == 3 && resultCode == RESULT_OK) {
-            intent.putExtra("Credential", "党员证信息");
+            intent.putExtra("Credential", "学历证明");
         }
 
         intent.putExtra("uri", data.getData());

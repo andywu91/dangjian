@@ -3,178 +3,114 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@drawable/new_login_bg"
+              android:gravity="center_horizontal"
               android:orientation="vertical"
               tools:context="com.example.andy.dangjian.LoginActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/black">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="返回"
-                android:textColor="@color/white"
-                android:textSize="18dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:text="登录"
-                android:textColor="@color/white"
-                android:textSize="24dp"/>
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.Toolbar>
+    <EditText
+        android:id="@+id/user_phone_number_edittext"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/rounded_rect"
+        android:hint="输入手机号"
+        android:paddingLeft="20dp"/>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/login_bg"
-        >
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_rect">
 
-        <ImageView
-            android:id="@+id/avatar"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:src="@drawable/login_avatar"/>
-
-        <RelativeLayout
-            android:id="@+id/input_layout"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_below="@id/avatar"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rounded_rect">
-
-            <ImageView
-                android:id="@+id/username_icon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/user"/>
-
-            <EditText
-                android:id="@+id/user_phone_number_edittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/username_icon"
-                android:layout_marginRight="30dp"
-                android:layout_toRightOf="@id/username_icon"
-                android:hint="请输入你的手机号"/>
-
-            <ImageView
-                android:id="@+id/firstname_icon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_below="@id/username_icon"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/password"/>
-
-            <EditText
-                android:id="@+id/firstname_edittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/firstname_icon"
-                android:layout_marginRight="30dp"
-                android:layout_toRightOf="@id/firstname_icon"
-                android:hint="请输入你的姓（可选）"/>
-
-            <ImageView
-                android:id="@+id/lastname_icon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_below="@id/firstname_icon"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/password"/>
-
-            <EditText
-                android:id="@+id/lastname_edittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/lastname_icon"
-                android:layout_marginRight="30dp"
-                android:layout_toRightOf="@id/lastname_icon"
-                android:hint="请输入你的名（可选）"/>
-
-            <ImageView
-                android:id="@+id/email_icon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_below="@id/lastname_icon"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/password"/>
-
-            <EditText
-                android:id="@+id/emial_edittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/email_icon"
-                android:layout_marginRight="30dp"
-                android:layout_toRightOf="@id/email_icon"
-                android:hint="请输入你的email（可选）"/>
-
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/login"
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/firstname_edittext"
+            android:layout_width="200dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/input_layout"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:text="登录"
-            android:textSize="24dp"
-            android:gravity="center"
-            android:background="@drawable/rounded_rect"/>
+            android:background="@drawable/rounded_rect"
+            android:hint="姓"
+            android:paddingLeft="20dp"/>
 
         <TextView
-            android:id="@+id/forget_pwd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/login"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:text="忘记密码"
-            android:textColor="@color/white"
-            android:textSize="18dp"/>
-
-        <TextView
-            android:id="@+id/register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/login"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:text="注册新用户"
-            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/oval_bg_gray"
+            android:gravity="center"
+            android:text="选"
             android:textSize="18dp"/>
 
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_rect"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/lastname_edittext"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded_rect"
+            android:hint="名"
+            android:paddingLeft="20dp"/>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/oval_bg_gray"
+            android:text="选"
+            android:gravity="center"
+            android:textSize="18dp"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_rect">
+
+        <EditText
+            android:id="@+id/emial_edittext"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded_rect"
+            android:hint="邮箱"
+            android:paddingLeft="20dp"/>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/oval_bg_gray"
+            android:gravity="center"
+            android:text="选"
+            android:textSize="18dp"/>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_rect_blue"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="18dp"/>
 
 
 </LinearLayout>

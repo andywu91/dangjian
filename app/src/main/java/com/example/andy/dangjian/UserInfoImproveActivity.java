@@ -1,10 +1,13 @@
 package com.example.andy.dangjian;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,8 +31,10 @@ public class UserInfoImproveActivity extends AppCompatActivity {
 
     @BindView(R.id.student_name_edittext)
     EditText studentNameEdittext;
-    @BindView(R.id.student_sex_radiogroup)
-    RadioGroup studentSexRadioGroup;
+    @BindView(R.id.male_button)
+    TextView maleButton;
+    @BindView(R.id.female_button)
+    TextView femaleButton;
     @BindView(R.id.student_education_edittext)
     EditText studentEducationEdittext;
     @BindView(R.id.student_address_edittext)
@@ -37,7 +42,9 @@ public class UserInfoImproveActivity extends AppCompatActivity {
     @BindView(R.id.student_picId_edittext)
     EditText studentPicIdEdittext;
     @BindView(R.id.submit)
-    TextView submitTextView;
+    ImageView submitTextView;
+
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +53,37 @@ public class UserInfoImproveActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        context = this;
+
+        maleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                femaleButton.setTextColor(ContextCompat.getColor(context, R.color.blue));
+                femaleButton.setBackgroundResource(0);
+                maleButton.setTextColor(ContextCompat.getColor(context, R.color.white));
+                maleButton.setBackgroundResource(R.drawable.oval_bg_blue);
+            }
+        });
+
+        femaleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                maleButton.setTextColor(ContextCompat.getColor(context, R.color.blue));
+                maleButton.setBackgroundResource(0);
+                femaleButton.setTextColor(ContextCompat.getColor(context, R.color.white));
+                femaleButton.setBackgroundResource(R.drawable.oval_bg_blue);
+            }
+        });
+
         submitTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Utils utils= Utils.INSTANCE;
-                utils.hideSoftInput(UserInfoImproveActivity.this,studentNameEdittext);
-                utils.hideSoftInput(UserInfoImproveActivity.this,studentEducationEdittext);
-                utils.hideSoftInput(UserInfoImproveActivity.this,studentAddressEdittext);
-                utils.hideSoftInput(UserInfoImproveActivity.this,studentPicIdEdittext);
+                Utils utils = Utils.INSTANCE;
+                utils.hideSoftInput(UserInfoImproveActivity.this, studentNameEdittext);
+                utils.hideSoftInput(UserInfoImproveActivity.this, studentEducationEdittext);
+                utils.hideSoftInput(UserInfoImproveActivity.this, studentAddressEdittext);
+                utils.hideSoftInput(UserInfoImproveActivity.this, studentPicIdEdittext);
 
                 String studentName = studentNameEdittext.getText().toString();
                 if (studentName.equals("")) {
@@ -92,7 +121,7 @@ public class UserInfoImproveActivity extends AppCompatActivity {
 
                 params.put("pid", studentPicId);
                 params.put("pic_id", "12");
-                if (studentSexRadioGroup.getCheckedRadioButtonId() == R.id.male_radiobutton) {
+                if (maleButton.getCurrentTextColor() == ContextCompat.getColor(context, R.color.white)) {
                     params.put("sex", "男");
                 } else {
                     params.put("sex", "女");

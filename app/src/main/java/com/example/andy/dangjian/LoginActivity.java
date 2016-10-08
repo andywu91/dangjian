@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
                             Log.i(TAG, "onFailure: register");
 
                             dialog.dismiss();
-                            Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "注册失败", Toast.LENGTH_SHORT).show();
                         }
                     });
 

@@ -53,6 +53,13 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View view = navigationView.getHeaderView(0);
+        TextView userPhoneNumberTextView = (TextView) view.findViewById(R.id.user_phone_number);
+
+        Utils utils = Utils.INSTANCE;
+        userPhoneNumberTextView.setText(utils.getUserPhoneNumber(this));
+
+
         init();
 
     }
@@ -95,17 +102,7 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.user_info) {
-
-            Intent intent = new Intent(this, UserInfoQueryActivity.class);
-            startActivity(intent);
-
-        } else if (id == R.id.user_info_improve) {
-
-            Intent intent = new Intent(this, ImproveUserDataActivity.class);
-            startActivity(intent);
-
-        }else if(id == R.id.logout){
+        if (id == R.id.logout) {
 
             Utils utils = Utils.INSTANCE;
             utils.clearUserPhoneNumber(this);
@@ -177,9 +174,9 @@ public class HomeActivity extends AppCompatActivity
 
         final int PAGE_COUNT = 5;
         private String tabTitles[] = new String[]{"首页", "新闻", "发现", "消息", "个人中心"};
-        private int[] imageResId = {R.drawable.home_page,
-                R.drawable.news,
-                R.drawable.search, R.drawable.message, R.drawable.personal_center};
+        private int[] imageResId = {R.drawable.new_home_page,
+                R.drawable.new_news,
+                R.drawable.new_search, R.drawable.new_message, R.drawable.new_personal_center};
         private Context context;
 
         public FragmentAdapter(FragmentManager fm, Context context) {
@@ -220,10 +217,6 @@ public class HomeActivity extends AppCompatActivity
             tv.setText(tabTitles[position]);
             ImageView img = (ImageView) view.findViewById(R.id.tab_imageview);
             img.setImageResource(imageResId[position]);
-
-            if (position == 2) {
-                img.setBackgroundResource(R.drawable.oval_bg_padding);
-            }
 
             return view;
         }

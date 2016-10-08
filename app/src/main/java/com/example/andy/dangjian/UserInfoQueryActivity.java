@@ -2,10 +2,12 @@ package com.example.andy.dangjian;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,19 +34,9 @@ public class UserInfoQueryActivity extends AppCompatActivity {
     @BindView(R.id.student_picId_edittext)
     EditText studentPicIdEditText;
     @BindView(R.id.submit)
-    TextView submit;
-    @BindView(R.id.query_layout)
-    LinearLayout queryLayout;
-    @BindView(R.id.result_layout)
-    LinearLayout resultLayout;
-    @BindView(R.id.student_name_textview)
-    TextView studentNameTextView;
-    @BindView(R.id.student_education_textview)
-    TextView studentEducationTextView;
-    @BindView(R.id.student_id_textview)
-    TextView studentIdTextView;
-    @BindView(R.id.student_address_textview)
-    TextView studentAddressTextView;
+    Button submit;
+    @BindView(R.id.review_state)
+    TextView reviewStateTextview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +49,8 @@ public class UserInfoQueryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Utils utils= Utils.INSTANCE;
-                utils.hideSoftInput(UserInfoQueryActivity.this,studentPicIdEditText);
+                Utils utils = Utils.INSTANCE;
+                utils.hideSoftInput(UserInfoQueryActivity.this, studentPicIdEditText);
 
                 String studentPicId = studentPicIdEditText.getText().toString();
                 if (studentPicId.equals("")) {
@@ -86,21 +78,25 @@ public class UserInfoQueryActivity extends AppCompatActivity {
                         CustomResponse getStudentInfoResponse = response.body();
                         String status = getStudentInfoResponse.getStatus();
                         if (status.equals("002")) {
-                            showAlertDialog("所查学员不存在");
+                            reviewStateTextview.setVisibility(View.VISIBLE);
+                            reviewStateTextview.setText("对不起，所查学员不存在");
                         } else if (status.equals("003")) {
-                            showAlertDialog("审核未通过");
+                            reviewStateTextview.setVisibility(View.VISIBLE);
+                            reviewStateTextview.setText("对不起，审核未通过");
                         } else if (status.equals("004")) {
-                            showAlertDialog("正在审核中");
+                            reviewStateTextview.setVisibility(View.VISIBLE);
+                            reviewStateTextview.setText("正在审核中，请稍候");
                         } else if (status.equals("200")) {
 
-                            queryLayout.setVisibility(View.GONE);
-                            resultLayout.setVisibility(View.VISIBLE);
+                            reviewStateTextview.setVisibility(View.GONE);
 
                             Student student = getStudentInfoResponse.getRpcJson().getStudent();
-                            studentNameTextView.setText(student.getName());
-                            studentEducationTextView.setText(student.getEducation());
-                            studentIdTextView.setText(student.getStudentId());
-                            studentAddressTextView.setText(student.getAddress());
+                            Intent intent = new Intent(UserInfoQueryActivity.this, StudentInfoActivity.class);
+                            intent.putExtra("studentName", student.getName());
+                            intent.putExtra("studentEducation", student.getEducation());
+                            intent.putExtra("studentAddress", student.getAddress());
+                            intent.putExtra("studentId",student.getStudentId());
+                            startActivity(intent);
                         }
 
                     }

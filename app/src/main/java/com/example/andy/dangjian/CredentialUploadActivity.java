@@ -24,7 +24,7 @@ public class CredentialUploadActivity extends AppCompatActivity {
     @BindView(R.id.selected_image_imageview)
     ImageView selectedImageImageView;
     @BindView(R.id.submit)
-    TextView submit;
+    ImageView submit;
 
 
     @Override

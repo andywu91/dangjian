@@ -9,6 +9,8 @@
     <color name="tab_select_color">#f44336</color>
     <color name="red">#FF0000</color>
     <color name="oval_stroke">#FF7575</color>
-    <color name="gray">#F0F0F0</color>
+    <color name="gray">#e2e2e2</color>
+    <color name="blue">#4088dd</color>
+    <color name="line_color">#ADADAD</color>
 
 </resources>

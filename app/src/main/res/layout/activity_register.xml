@@ -4,7 +4,7 @@
     android:id="@+id/activity_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_bg"
+    android:background="@drawable/new_login_bg"
     android:orientation="vertical"
     tools:context="com.example.andy.dangjian.RegisterActivity">
 
@@ -41,7 +41,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/login_bg">
+        android:background="@drawable/new_login_bg">
 
         <RelativeLayout
             android:id="@+id/input_layout"

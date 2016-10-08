@@ -38,7 +38,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:background="@drawable/login_bg"
+        android:background="@drawable/home_page_banner"
         android:gravity="center"
         android:orientation="vertical">
 
