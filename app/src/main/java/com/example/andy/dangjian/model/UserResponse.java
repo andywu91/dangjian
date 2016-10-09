@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Administrator on 2016/10/5.
  */
 
-public class CustomResponse {
+public class UserResponse {
 
     private String success;
 
@@ -17,7 +17,7 @@ public class CustomResponse {
     private String res;
 
     @SerializedName("rpcJSON")
-    private RpcJson rpcJson;
+    private UserRpcJson userRpcJson;
 
     public String getSuccess() {
         return success;
@@ -35,7 +35,7 @@ public class CustomResponse {
         return status;
     }
 
-    public RpcJson getRpcJson() {
-        return rpcJson;
+    public UserRpcJson getUserRpcJson() {
+        return userRpcJson;
     }
 }

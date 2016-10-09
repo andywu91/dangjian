@@ -8,12 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.andy.dangjian.interfaces.StudentInterface;
-import com.example.andy.dangjian.model.CustomResponse;
+import com.example.andy.dangjian.model.StudentResponse;
 import com.example.andy.dangjian.network.HttpUtils;
 import com.example.andy.dangjian.utils.Utils;
 
@@ -43,6 +42,8 @@ public class UserInfoImproveActivity extends AppCompatActivity {
     EditText studentPicIdEdittext;
     @BindView(R.id.submit)
     ImageView submitTextView;
+    @BindView(R.id.back)
+    ImageView back;
 
     private Context context;
 
@@ -75,11 +76,18 @@ public class UserInfoImproveActivity extends AppCompatActivity {
             }
         });
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         submitTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Utils utils = Utils.INSTANCE;
+                final Utils utils = Utils.INSTANCE;
                 utils.hideSoftInput(UserInfoImproveActivity.this, studentNameEdittext);
                 utils.hideSoftInput(UserInfoImproveActivity.this, studentEducationEdittext);
                 utils.hideSoftInput(UserInfoImproveActivity.this, studentAddressEdittext);
@@ -103,7 +111,7 @@ public class UserInfoImproveActivity extends AppCompatActivity {
                     return;
                 }
 
-                String studentPicId = studentPicIdEdittext.getText().toString();
+                final String studentPicId = studentPicIdEdittext.getText().toString();
                 if (studentPicId.equals("")) {
                     Toast.makeText(UserInfoImproveActivity.this, "请输入身份证后六位", Toast.LENGTH_SHORT).show();
                     return;
@@ -132,40 +140,43 @@ public class UserInfoImproveActivity extends AppCompatActivity {
                 HttpUtils httpUtils = HttpUtils.INSTANCE;
                 Retrofit retrofit = httpUtils.getRetrofitInstance();
                 StudentInterface studentInterface = retrofit.create(StudentInterface.class);
-                Call<CustomResponse> registerStudent = studentInterface.registerStudent(params);
+                Call<StudentResponse> registerStudent = studentInterface.registerStudent(params);
 
-                registerStudent.enqueue(new Callback<CustomResponse>() {
+                registerStudent.enqueue(new Callback<StudentResponse>() {
                     @Override
-                    public void onResponse(Call<CustomResponse> call, Response<CustomResponse> response) {
+                    public void onResponse(Call<StudentResponse> call, Response<StudentResponse> response) {
 
-                        CustomResponse registerStudentResponse = response.body();
+                        StudentResponse registerStudentResponse = response.body();
                         if (registerStudentResponse != null && registerStudentResponse.getSuccess().equals("1")) {
 
                             dialog.dismiss();
 
                             String status = registerStudentResponse.getStatus();
                             if (status.equals("001")) {
-                                Toast.makeText(UserInfoImproveActivity.this, "登陆账号不合法，不可提交", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UserInfoImproveActivity.this, "对不起，登陆账号不合法，不可提交", Toast.LENGTH_SHORT).show();
                             } else if (status.equals("100")) {
-                                Toast.makeText(UserInfoImproveActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UserInfoImproveActivity.this, "提交成功！", Toast.LENGTH_SHORT).show();
+
+                                utils.saveUserPidNumber(UserInfoImproveActivity.this, studentPicId);
+
                             } else if (status.equals("101")) {
-                                Toast.makeText(UserInfoImproveActivity.this, "该学员已经存在", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UserInfoImproveActivity.this, "对不起，该学员已经存在", Toast.LENGTH_SHORT).show();
                             }
 
                             finish();
 
                         } else {
                             dialog.dismiss();
-                            Toast.makeText(UserInfoImproveActivity.this, "提交失败", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserInfoImproveActivity.this, "对不起，提交失败", Toast.LENGTH_SHORT).show();
 
                         }
 
                     }
 
                     @Override
-                    public void onFailure(Call<CustomResponse> call, Throwable t) {
+                    public void onFailure(Call<StudentResponse> call, Throwable t) {
                         dialog.dismiss();
-                        Toast.makeText(UserInfoImproveActivity.this, "提交失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UserInfoImproveActivity.this, "对不起，提交失败", Toast.LENGTH_SHORT).show();
                     }
                 });
 

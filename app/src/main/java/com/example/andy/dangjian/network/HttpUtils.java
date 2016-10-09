@@ -11,7 +11,7 @@ public enum HttpUtils {
 
     INSTANCE;
 
-    private static final String BASE_URL = "http://45.124.22.22/SDPL/webAPI/test/interfaces/";
+    private static final String BASE_URL = "http://211.149.194.149/SDPL/webAPI/test/interfaces/";
     private Retrofit refrofitInstance;
 
     public Retrofit getRetrofitInstance() {

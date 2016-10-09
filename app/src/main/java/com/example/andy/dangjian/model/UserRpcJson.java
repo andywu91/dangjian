@@ -2,16 +2,18 @@ package com.example.andy.dangjian.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2016/10/7.
  */
 
-public class RpcJson {
+public class UserRpcJson {
 
     @SerializedName("std")
-    private Student student;
+    private List<User> users;
 
-    public Student getStudent() {
-        return student;
+    public List<User> getUsers() {
+        return users;
     }
 }

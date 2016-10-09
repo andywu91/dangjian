@@ -17,6 +17,8 @@ public enum Utils {
 
     private static final String USER_PHONE_NUMBER = "user_phone_number";
 
+    private static final String USER_PID_NUMBER = "user_pid_number";
+
     public void saveUserPhoneNumber(Context context, String userPhoneNumber) {
 
         setUserPhoneNumberInSharedPreferences(getSharedPreferencesForUser(context), userPhoneNumber);
@@ -25,6 +27,14 @@ public enum Utils {
     public String getUserPhoneNumber(Context context) {
 
         return getUserPhoneNumberInSharedPreferences(getSharedPreferencesForUser(context));
+    }
+
+    public void saveUserPidNumber(Context context, String userPidNumber) {
+        setUserPidNumberInSharedPreferences(getSharedPreferencesForUser(context), userPidNumber);
+    }
+
+    public String getUserPidNumber(Context context) {
+        return getUserPidumberInSharedPreferences(getSharedPreferencesForUser(context));
     }
 
     public void clearUserPhoneNumber(Context context) {
@@ -37,11 +47,24 @@ public enum Utils {
 
     }
 
+    private void setUserPidNumberInSharedPreferences(SharedPreferences sharedPreference, String userPidNumber) {
+
+        SharedPreferences.Editor editor = sharedPreference.edit();
+        editor.putString(USER_PID_NUMBER, userPidNumber);
+        editor.apply();
+    }
+
     private void setUserPhoneNumberInSharedPreferences(SharedPreferences sharedPreference, String userPhoneNumber) {
 
         SharedPreferences.Editor editor = sharedPreference.edit();
         editor.putString(USER_PHONE_NUMBER, userPhoneNumber);
         editor.apply();
+    }
+
+    private String getUserPidumberInSharedPreferences(SharedPreferences sharedPreferences) {
+
+        return sharedPreferences.getString(USER_PID_NUMBER, "");
+
     }
 
     private String getUserPhoneNumberInSharedPreferences(SharedPreferences sharedPreferences) {

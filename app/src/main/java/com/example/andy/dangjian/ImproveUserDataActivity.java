@@ -20,6 +20,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.andy.dangjian.utils.Utils;
 
 public class ImproveUserDataActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -43,6 +46,7 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
     private TextView viewpage1;
     private TextView viewpage2;
     private TextView viewpage3;
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +58,12 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
         viewpage1 = (TextView) findViewById(R.id.viewpager_1);
         viewpage2 = (TextView) findViewById(R.id.viewpager_2);
         viewpage3 = (TextView) findViewById(R.id.viewpager_3);
+        back = (ImageView) findViewById(R.id.back);
 
         viewpage1.setOnClickListener(this);
         viewpage2.setOnClickListener(this);
         viewpage3.setOnClickListener(this);
+        back.setOnClickListener(this);
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -126,6 +132,10 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
             case R.id.viewpager_3:
                 mViewPager.setCurrentItem(2);
                 break;
+            case R.id.back:
+                finish();
+                break;
+
         }
     }
 
@@ -184,13 +194,25 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
                 public void onClick(View v) {
 
                     Intent intent;
+                    Utils utils;
 
                     switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
                         case 2:
-                            intent = new Intent();
-                            intent.setType("image/*");
-                            intent.setAction(Intent.ACTION_GET_CONTENT);
-                            getActivity().startActivityForResult(intent, 2);
+
+                            utils = Utils.INSTANCE;
+                            if (utils.getUserPidNumber(getContext()).equals("")) {
+                                Toast.makeText(getContext(), "请先完成提交个人信息", Toast.LENGTH_SHORT).show();
+                            } else {
+
+                                intent = new Intent();
+//                                intent.setType("image/*");
+//                                intent.setAction(Intent.ACTION_GET_CONTENT);
+
+                                intent=new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                                getActivity().startActivityForResult(intent, 2);
+                            }
+
                             break;
                         case 1:
                             intent = new Intent(getActivity(), UserInfoImproveActivity.class);
@@ -198,10 +220,20 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
                             break;
                         case 3:
 
-                            intent = new Intent();
-                            intent.setType("image/*");
-                            intent.setAction(Intent.ACTION_GET_CONTENT);
-                            getActivity().startActivityForResult(intent, 3);
+                            utils = Utils.INSTANCE;
+                            if (utils.getUserPidNumber(getContext()).equals("")) {
+                                Toast.makeText(getContext(), "请先完成提交个人信息", Toast.LENGTH_SHORT).show();
+                            } else {
+
+                                intent = new Intent();
+//                                intent.setType("image/*");
+//                                intent.setAction(Intent.ACTION_GET_CONTENT);
+
+                                intent=new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+
+                                getActivity().startActivityForResult(intent, 3);
+                            }
 
                             break;
                     }

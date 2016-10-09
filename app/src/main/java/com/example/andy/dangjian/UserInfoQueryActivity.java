@@ -9,12 +9,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.andy.dangjian.interfaces.StudentInterface;
-import com.example.andy.dangjian.model.CustomResponse;
+import com.example.andy.dangjian.model.StudentResponse;
 import com.example.andy.dangjian.model.Student;
 import com.example.andy.dangjian.network.HttpUtils;
 import com.example.andy.dangjian.utils.Utils;
@@ -37,6 +37,8 @@ public class UserInfoQueryActivity extends AppCompatActivity {
     Button submit;
     @BindView(R.id.review_state)
     TextView reviewStateTextview;
+    @BindView(R.id.back)
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,13 @@ public class UserInfoQueryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_info_query);
 
         ButterKnife.bind(this);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,14 +77,14 @@ public class UserInfoQueryActivity extends AppCompatActivity {
                 params.put("mode", "SP");
                 params.put("action", "checkStdUser");
                 params.put("pid", studentPicId);
-                Call<CustomResponse> getStudentInfoCall = studentInterface.getStudentInfo(params);
-                getStudentInfoCall.enqueue(new Callback<CustomResponse>() {
+                Call<StudentResponse> getStudentInfoCall = studentInterface.getStudentInfo(params);
+                getStudentInfoCall.enqueue(new Callback<StudentResponse>() {
                     @Override
-                    public void onResponse(Call<CustomResponse> call, Response<CustomResponse> response) {
+                    public void onResponse(Call<StudentResponse> call, Response<StudentResponse> response) {
 
                         dialog.dismiss();
 
-                        CustomResponse getStudentInfoResponse = response.body();
+                        StudentResponse getStudentInfoResponse = response.body();
                         String status = getStudentInfoResponse.getStatus();
                         if (status.equals("002")) {
                             reviewStateTextview.setVisibility(View.VISIBLE);
@@ -90,19 +99,19 @@ public class UserInfoQueryActivity extends AppCompatActivity {
 
                             reviewStateTextview.setVisibility(View.GONE);
 
-                            Student student = getStudentInfoResponse.getRpcJson().getStudent();
+                            Student student = getStudentInfoResponse.getStudentRpcJson().getStudent().get(0);
                             Intent intent = new Intent(UserInfoQueryActivity.this, StudentInfoActivity.class);
                             intent.putExtra("studentName", student.getName());
                             intent.putExtra("studentEducation", student.getEducation());
                             intent.putExtra("studentAddress", student.getAddress());
-                            intent.putExtra("studentId",student.getStudentId());
+                            intent.putExtra("studentId", student.getStudentId());
                             startActivity(intent);
                         }
 
                     }
 
                     @Override
-                    public void onFailure(Call<CustomResponse> call, Throwable t) {
+                    public void onFailure(Call<StudentResponse> call, Throwable t) {
                         dialog.dismiss();
                         Toast.makeText(UserInfoQueryActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
                     }

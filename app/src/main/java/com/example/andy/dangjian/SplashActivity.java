@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.andy.dangjian.interfaces.UserInterface;
-import com.example.andy.dangjian.model.CustomResponse;
+import com.example.andy.dangjian.model.StudentResponse;
+import com.example.andy.dangjian.model.UserResponse;
 import com.example.andy.dangjian.network.HttpUtils;
 import com.example.andy.dangjian.utils.Utils;
 
@@ -43,13 +44,13 @@ public class SplashActivity extends AppCompatActivity {
 
         final UserInterface userInterface = retrofit.create(UserInterface.class);
 
-        Call<CustomResponse> responseCall = userInterface.registerUser(params);
+        Call<UserResponse> responseCall = userInterface.registerUser(params);
 
-        responseCall.enqueue(new Callback<CustomResponse>() {
+        responseCall.enqueue(new Callback<UserResponse>() {
             @Override
-            public void onResponse(Call<CustomResponse> call, retrofit2.Response<CustomResponse> response) {
+            public void onResponse(Call<UserResponse> call, retrofit2.Response<UserResponse> response) {
 
-                CustomResponse registerResponse = response.body();
+                UserResponse registerResponse = response.body();
 
                 String success = registerResponse.getSuccess();
                 String res = registerResponse.getRes();
@@ -66,13 +67,13 @@ public class SplashActivity extends AppCompatActivity {
                     loginParams.put("userid", userPhoneNumber);
                     loginParams.put("userpass", userPhoneNumber);
 
-                    Call<CustomResponse> loginCall = userInterface.loginUser(loginParams);
-                    loginCall.enqueue(new Callback<CustomResponse>() {
+                    Call<UserResponse> loginCall = userInterface.loginUser(loginParams);
+                    loginCall.enqueue(new Callback<UserResponse>() {
                         @Override
-                        public void onResponse(Call<CustomResponse> call, retrofit2.Response<CustomResponse> response) {
+                        public void onResponse(Call<UserResponse> call, retrofit2.Response<UserResponse> response) {
                             Log.i(TAG, "onResponse: ");
 
-                            CustomResponse loginResponse = response.body();
+                            UserResponse loginResponse = response.body();
 
                             if (loginResponse.getSuccess().equals("1")) {
 
@@ -85,7 +86,7 @@ public class SplashActivity extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onFailure(Call<CustomResponse> call, Throwable t) {
+                        public void onFailure(Call<UserResponse> call, Throwable t) {
                             Log.i(TAG, "onFailure: login");
                         }
                     });
@@ -95,7 +96,7 @@ public class SplashActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<CustomResponse> call, Throwable t) {
+            public void onFailure(Call<UserResponse> call, Throwable t) {
                 Log.i(TAG, "onFailure: register");
             }
         });

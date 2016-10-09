@@ -106,6 +106,10 @@ public class HomeActivity extends AppCompatActivity
 
             Utils utils = Utils.INSTANCE;
             utils.clearUserPhoneNumber(this);
+
+            Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

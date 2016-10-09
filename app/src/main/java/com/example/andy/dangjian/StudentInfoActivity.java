@@ -2,6 +2,8 @@ package com.example.andy.dangjian;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -17,6 +19,8 @@ public class StudentInfoActivity extends AppCompatActivity {
     TextView studentAddressTextView;
     @BindView(R.id.student_id_textview)
     TextView studentIdTextView;
+    @BindView(R.id.back)
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +38,12 @@ public class StudentInfoActivity extends AppCompatActivity {
         studentEducationTextView.setText(studentEducation);
         studentAddressTextView.setText(studentAddress);
         studentIdTextView.setText(studentId);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

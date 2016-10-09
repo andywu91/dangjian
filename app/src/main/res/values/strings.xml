@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DangJian</string>
+    <string name="app_name">党校在线</string>
     <string name="title_activity_improve_user_info">ImproveUserInfoActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>

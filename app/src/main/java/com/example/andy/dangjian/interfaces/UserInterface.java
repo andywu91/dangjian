@@ -1,6 +1,7 @@
 package com.example.andy.dangjian.interfaces;
 
-import com.example.andy.dangjian.model.CustomResponse;
+import com.example.andy.dangjian.model.StudentResponse;
+import com.example.andy.dangjian.model.UserResponse;
 
 import java.util.Map;
 
@@ -15,8 +16,8 @@ import retrofit2.http.QueryMap;
 public interface UserInterface {
 
     @POST("index.do")
-    Call<CustomResponse> registerUser(@QueryMap Map<String,String> map);
+    Call<UserResponse> registerUser(@QueryMap Map<String,String> map);
 
     @POST("index.do")
-    Call<CustomResponse> loginUser(@QueryMap Map<String,String> map);
+    Call<UserResponse> loginUser(@QueryMap Map<String,String> map);
 }
