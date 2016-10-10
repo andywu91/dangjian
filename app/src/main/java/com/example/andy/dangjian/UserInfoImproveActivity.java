@@ -1,11 +1,15 @@
 package com.example.andy.dangjian;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +20,8 @@ import com.example.andy.dangjian.model.StudentResponse;
 import com.example.andy.dangjian.network.HttpUtils;
 import com.example.andy.dangjian.utils.Utils;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +46,14 @@ public class UserInfoImproveActivity extends AppCompatActivity {
     EditText studentAddressEdittext;
     @BindView(R.id.student_picId_edittext)
     EditText studentPicIdEdittext;
+    @BindView(R.id.student_birthday_textview)
+    TextView studentBirthdayTextView;
+    @BindView(R.id.student_nation_edittext)
+    EditText studentNationEdittext;
+    @BindView(R.id.student_political_status_edittext)
+    EditText studentPoliticalStatusEdittext;
+    @BindView(R.id.student_telephone_edittext)
+    EditText studentTelephoneEdittext;
     @BindView(R.id.submit)
     ImageView submitTextView;
     @BindView(R.id.back)
@@ -76,6 +90,41 @@ public class UserInfoImproveActivity extends AppCompatActivity {
             }
         });
 
+
+        studentBirthdayTextView.setText("请点击选择日期");
+
+        studentBirthdayTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final DatePickerDialog mDialog = new DatePickerDialog(UserInfoImproveActivity.this,AlertDialog.THEME_HOLO_LIGHT,null,
+                        1980, 1, 1);
+
+                //手动设置按钮
+                mDialog.setButton(DialogInterface.BUTTON_POSITIVE, "完成", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //通过mDialog.getDatePicker()获得dialog上的DatePicker组件，然后可以获取日期信息
+                        DatePicker datePicker = mDialog.getDatePicker();
+                        int year = datePicker.getYear();
+                        int month = datePicker.getMonth();
+                        int day = datePicker.getDayOfMonth();
+
+                        studentBirthdayTextView.setText(year+"-"+month+"-"+day);
+                    }
+                });
+                //取消按钮，如果不需要直接不设置即可
+                mDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+                mDialog.show();
+
+            }
+        });
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,6 +141,9 @@ public class UserInfoImproveActivity extends AppCompatActivity {
                 utils.hideSoftInput(UserInfoImproveActivity.this, studentEducationEdittext);
                 utils.hideSoftInput(UserInfoImproveActivity.this, studentAddressEdittext);
                 utils.hideSoftInput(UserInfoImproveActivity.this, studentPicIdEdittext);
+                utils.hideSoftInput(UserInfoImproveActivity.this, studentNationEdittext);
+                utils.hideSoftInput(UserInfoImproveActivity.this, studentPoliticalStatusEdittext);
+                utils.hideSoftInput(UserInfoImproveActivity.this, studentTelephoneEdittext);
 
                 String studentName = studentNameEdittext.getText().toString();
                 if (studentName.equals("")) {
@@ -117,6 +169,31 @@ public class UserInfoImproveActivity extends AppCompatActivity {
                     return;
                 }
 
+                final String studentBirthday = studentBirthdayTextView.getText().toString();
+                if (studentBirthday.equals("")) {
+                    Toast.makeText(UserInfoImproveActivity.this, "请输入出生日期", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                final String studentNation = studentNationEdittext.getText().toString();
+                if (studentBirthday.equals("")) {
+                    Toast.makeText(UserInfoImproveActivity.this, "请输入民族", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                final String studentPoliticalStatus = studentPoliticalStatusEdittext.getText().toString();
+                if (studentBirthday.equals("")) {
+                    Toast.makeText(UserInfoImproveActivity.this, "请输入政治面貌", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                final String studentTelephone = studentTelephoneEdittext.getText().toString();
+                if (studentBirthday.equals("")) {
+                    Toast.makeText(UserInfoImproveActivity.this, "请输入联系电话", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
                 final ProgressDialog dialog = ProgressDialog.show(UserInfoImproveActivity.this, "请稍后", "正在执行", true, false);
 
                 Map<String, String> params = new HashMap<>();
@@ -125,10 +202,10 @@ public class UserInfoImproveActivity extends AppCompatActivity {
 
                 String userPhoneNumber = utils.getUserPhoneNumber(UserInfoImproveActivity.this);
                 params.put("userid", userPhoneNumber);
-                params.put("stdname", studentName);
 
+                params.put("stdname", studentName);
                 params.put("pid", studentPicId);
-                params.put("pic_id", "12");
+
                 if (maleButton.getCurrentTextColor() == ContextCompat.getColor(context, R.color.white)) {
                     params.put("sex", "男");
                 } else {
@@ -136,6 +213,10 @@ public class UserInfoImproveActivity extends AppCompatActivity {
                 }
                 params.put("education", studentEducation);
                 params.put("address", studentAddress);
+                params.put("birthday",studentBirthday);
+                params.put("nation",studentNation);
+                params.put("political_status",studentPoliticalStatus);
+                params.put("tel",studentTelephone);
 
                 HttpUtils httpUtils = HttpUtils.INSTANCE;
                 Retrofit retrofit = httpUtils.getRetrofitInstance();

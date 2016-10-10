@@ -106,6 +106,7 @@ public class HomeActivity extends AppCompatActivity
 
             Utils utils = Utils.INSTANCE;
             utils.clearUserPhoneNumber(this);
+            utils.clearUserPidNumber(this);
 
             Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
             startActivity(intent);

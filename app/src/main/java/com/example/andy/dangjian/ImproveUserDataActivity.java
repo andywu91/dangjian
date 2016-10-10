@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +26,8 @@ import android.widget.Toast;
 import com.example.andy.dangjian.utils.Utils;
 
 public class ImproveUserDataActivity extends AppCompatActivity implements View.OnClickListener {
+
+    public static final String TAG = ImproveUserDataActivity.class.getSimpleName();
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -150,6 +153,9 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
+        private Utils utils;
+
+
         public PlaceholderFragment() {
         }
 
@@ -173,18 +179,40 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
             ImageView imageView = (ImageView) rootView.findViewById(R.id.operation_identity_imageview);
             LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.rounded_layout);
 
+            TextView messageTextView = (TextView) rootView.findViewById(R.id.message_textview);
+
             switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
                 case 2:
                     textView.setText("身份证信息");
                     imageView.setBackgroundResource(R.drawable.identitiy_card_icon);
+
+                    utils = Utils.INSTANCE;
+
+                    String userPidNumber = utils.getUserPidNumber(getContext());
+                    Log.i(TAG, "onCreateView: "+userPidNumber);
+
+                    if (utils.getUserPidNumber(getContext()).equals("")) {
+                        messageTextView.setText("需要完成填写个人信息才能进入");
+                    } else {
+                        messageTextView.setText("身份证照片上传");
+                    }
+
                     break;
                 case 1:
                     textView.setText("个人信息");
                     imageView.setBackgroundResource(R.drawable.user_info_icon);
+                    messageTextView.setText("个人信息填写");
                     break;
                 case 3:
                     textView.setText("学历证明");
                     imageView.setBackgroundResource(R.drawable.user_photo_icon);
+
+                    utils = Utils.INSTANCE;
+                    if (utils.getUserPidNumber(getContext()).equals("")) {
+                        messageTextView.setText("需要完成填写个人信息才能进入");
+                    } else {
+                        messageTextView.setText("学历证明照片上传");
+                    }
                     break;
                 default:
             }
@@ -194,7 +222,6 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
                 public void onClick(View v) {
 
                     Intent intent;
-                    Utils utils;
 
                     switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
                         case 2:
@@ -204,11 +231,11 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
                                 Toast.makeText(getContext(), "请先完成提交个人信息", Toast.LENGTH_SHORT).show();
                             } else {
 
-                                intent = new Intent();
+//                                intent = new Intent();
 //                                intent.setType("image/*");
 //                                intent.setAction(Intent.ACTION_GET_CONTENT);
 
-                                intent=new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
                                 getActivity().startActivityForResult(intent, 2);
                             }
@@ -216,7 +243,7 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
                             break;
                         case 1:
                             intent = new Intent(getActivity(), UserInfoImproveActivity.class);
-                            startActivity(intent);
+                            getActivity().startActivityForResult(intent, 1);
                             break;
                         case 3:
 
@@ -225,11 +252,11 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
                                 Toast.makeText(getContext(), "请先完成提交个人信息", Toast.LENGTH_SHORT).show();
                             } else {
 
-                                intent = new Intent();
+//                                intent = new Intent();
 //                                intent.setType("image/*");
 //                                intent.setAction(Intent.ACTION_GET_CONTENT);
 
-                                intent=new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
 
                                 getActivity().startActivityForResult(intent, 3);
@@ -250,14 +277,41 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
 
         Intent intent = new Intent(this, CredentialUploadActivity.class);
 
-        if (requestCode == 2 && resultCode == RESULT_OK) {
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+
+            Utils utils = Utils.INSTANCE;
+
+            TextView messageTextView = (TextView) mViewPager.getChildAt(1).findViewById(R.id.message_textview);
+
+            String userPidNumber = utils.getUserPidNumber(this);
+
+            if (userPidNumber.equals("")) {
+                messageTextView.setText("需要完成填写个人信息才能进入");
+            } else {
+                messageTextView.setText("身份证照片上传");
+            }
+
+            TextView xlzmMessageTextView = (TextView) mViewPager.getChildAt(2).findViewById(R.id.message_textview);
+
+            if (userPidNumber.equals("")) {
+                xlzmMessageTextView.setText("需要完成填写个人信息才能进入");
+            } else {
+                xlzmMessageTextView.setText("学历证明照片上传");
+            }
+
+
+        } else if (requestCode == 2 && resultCode == RESULT_OK) {
             intent.putExtra("Credential", "身份证信息");
+            intent.putExtra("uri", data.getData());
+            startActivity(intent);
+
         } else if (requestCode == 3 && resultCode == RESULT_OK) {
             intent.putExtra("Credential", "学历证明");
+
+            intent.putExtra("uri", data.getData());
+            startActivity(intent);
         }
 
-        intent.putExtra("uri", data.getData());
-        startActivity(intent);
 
         super.onActivityResult(requestCode, resultCode, data);
     }

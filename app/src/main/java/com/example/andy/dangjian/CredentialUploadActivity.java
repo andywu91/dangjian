@@ -37,6 +37,8 @@ import retrofit2.Retrofit;
 
 public class CredentialUploadActivity extends AppCompatActivity {
 
+    public static final String TAG = CredentialUploadActivity.class.getSimpleName();
+
     @BindView(R.id.credential_text)
     TextView credentialTextTextView;
     @BindView(R.id.selected_image_imageview)
@@ -73,9 +75,9 @@ public class CredentialUploadActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 ContentResolver cr = CredentialUploadActivity.this.getContentResolver();
-                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
                 Cursor cursor = cr.query(uri, filePathColumn, null, null, null);
-                if(cursor==null){
+                if (cursor == null) {
                     return;
                 }
                 cursor.moveToFirst();
@@ -89,9 +91,9 @@ public class CredentialUploadActivity extends AppCompatActivity {
                 String userPidNumber = utils.getUserPidNumber(CredentialUploadActivity.this);
 
                 String imageType = "";
-                if(credentialText.equals("身份证信息")){
+                if (credentialText.equals("身份证信息")) {
                     imageType = "1";
-                }else if(credentialText.equals("学历证明")){
+                } else if (credentialText.equals("学历证明")) {
                     imageType = "2";
                 }
 
@@ -102,28 +104,40 @@ public class CredentialUploadActivity extends AppCompatActivity {
                 MultipartBody.Builder builder = new MultipartBody.Builder()
                         .setType(MultipartBody.FORM)
                         .addFormDataPart("pid", userPidNumber)
-                        .addFormDataPart("img_type",imageType);
+                        .addFormDataPart("img_type", imageType);
                 RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
                 builder.addFormDataPart("image", file.getName(), imageBody);
 
                 List<MultipartBody.Part> parts = builder.build().parts();
 
-                Map<String,String> uploadParams = new HashMap<>();
-                uploadParams.put("mode","SP");
-                uploadParams.put("action","uploadImg");
+                Map<String, String> uploadParams = new HashMap<>();
+                uploadParams.put("mode", "SP");
+                uploadParams.put("action", "uploadImg");
 
-                Call<StudentResponse> uploadImageResponse = studentInterface.uploadImage(uploadParams,parts);
+                Call<StudentResponse> uploadImageResponse = studentInterface.uploadImage(uploadParams, parts);
                 uploadImageResponse.enqueue(new Callback<StudentResponse>() {
                     @Override
                     public void onResponse(Call<StudentResponse> call, Response<StudentResponse> response) {
 
                         StudentResponse studentResponse = response.body();
                         String success = studentResponse.getSuccess();
-                        if(success.equals("1")){
-                            Toast.makeText(CredentialUploadActivity.this, "上传成功", Toast.LENGTH_SHORT).show();
-                            finish();
-                        }else {
-                            Toast.makeText(CredentialUploadActivity.this, "上传失败", Toast.LENGTH_SHORT).show();
+                        if (success.equals("1")) {
+
+                            String status = studentResponse.getStatus();
+                            if(status.equals("001")){
+                                Toast.makeText(CredentialUploadActivity.this, "对不起，上传出错", Toast.LENGTH_SHORT).show();
+                            }else if(status.equals("002")){
+                                Toast.makeText(CredentialUploadActivity.this, "身份证信息不存在，请先填写信息", Toast.LENGTH_SHORT).show();
+                            }else if(status.equals("003")){
+                                Toast.makeText(CredentialUploadActivity.this, "对不起，图片类型不正确", Toast.LENGTH_SHORT).show();
+                            }else if(status.equals("200")){
+                                Toast.makeText(CredentialUploadActivity.this, "上传成功", Toast.LENGTH_SHORT).show();
+                                Log.i(TAG, "onResponse: " + studentResponse.getStudentRpcJson().getStudent().get(0).getImgUrl());
+                                finish();
+                            }
+
+                        } else {
+                            Toast.makeText(CredentialUploadActivity.this, "对不起，上传失败", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -133,7 +147,7 @@ public class CredentialUploadActivity extends AppCompatActivity {
 
                         t.printStackTrace();
 
-                        Toast.makeText(CredentialUploadActivity.this, "上传失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CredentialUploadActivity.this, "对不起，上传失败", Toast.LENGTH_SHORT).show();
 
                     }
                 });

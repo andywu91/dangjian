@@ -61,7 +61,7 @@ public class UserInfoQueryActivity extends AppCompatActivity {
                 Utils utils = Utils.INSTANCE;
                 utils.hideSoftInput(UserInfoQueryActivity.this, studentPicIdEditText);
 
-                String studentPicId = studentPicIdEditText.getText().toString();
+                final String studentPicId = studentPicIdEditText.getText().toString();
                 if (studentPicId.equals("")) {
                     Toast.makeText(UserInfoQueryActivity.this, "请输入身份证号", Toast.LENGTH_SHORT).show();
                     return;
@@ -99,12 +99,21 @@ public class UserInfoQueryActivity extends AppCompatActivity {
 
                             reviewStateTextview.setVisibility(View.GONE);
 
+                            Toast.makeText(UserInfoQueryActivity.this, "恭喜，审核已通过", Toast.LENGTH_SHORT).show();
+
                             Student student = getStudentInfoResponse.getStudentRpcJson().getStudent().get(0);
                             Intent intent = new Intent(UserInfoQueryActivity.this, StudentInfoActivity.class);
                             intent.putExtra("studentName", student.getName());
                             intent.putExtra("studentEducation", student.getEducation());
                             intent.putExtra("studentAddress", student.getAddress());
                             intent.putExtra("studentId", student.getStudentId());
+                            intent.putExtra("studentBirthday",student.getBirthday());
+                            intent.putExtra("studentNation",student.getNation());
+                            intent.putExtra("studentPoliticalStatus",student.getPoliticalStatus());
+                            intent.putExtra("studentTelephone",student.getTelephone());
+                            intent.putExtra("studentSex",student.getSex());
+                            intent.putExtra("studentSFZUrl", student.getSfzUrl());
+                            intent.putExtra("studentXLZMUrl", student.getXlzmUrl());
                             startActivity(intent);
                         }
 

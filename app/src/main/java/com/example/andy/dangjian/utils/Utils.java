@@ -41,6 +41,10 @@ public enum Utils {
         clearUserPhoneNumberInSharedPreferences(getSharedPreferencesForUser(context));
     }
 
+    public void clearUserPidNumber(Context context) {
+        clearUserPidNumberInSharedPreferences(getSharedPreferencesForUser(context));
+    }
+
     private SharedPreferences getSharedPreferencesForUser(Context context) {
 
         return context.getSharedPreferences(SHAREDPREFERENCE_USER_NAME, Context.MODE_PRIVATE);
@@ -76,7 +80,14 @@ public enum Utils {
     private void clearUserPhoneNumberInSharedPreferences(SharedPreferences sharedPreferences) {
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove(USER_PHONE_NUMBER);
+        editor.putString(USER_PHONE_NUMBER,"");
+        editor.apply();
+    }
+
+    private void clearUserPidNumberInSharedPreferences(SharedPreferences sharedPreferences) {
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(USER_PID_NUMBER,"");
         editor.apply();
     }
 
