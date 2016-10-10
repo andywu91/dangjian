@@ -193,8 +193,12 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
 
                     if (utils.getUserPidNumber(getContext()).equals("")) {
                         messageTextView.setText("需要完成填写个人信息才能进入");
+                        messageTextView.setTextColor(ContextCompat.getColor(getContext(),R.color.black));
+                        messageTextView.setBackgroundResource(0);
                     } else {
                         messageTextView.setText("身份证照片上传");
+                        messageTextView.setTextColor(ContextCompat.getColor(getContext(),R.color.white));
+                        messageTextView.setBackgroundResource(R.drawable.rounded_rect_blue);
                     }
 
                     break;
@@ -202,6 +206,8 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
                     textView.setText("个人信息");
                     imageView.setBackgroundResource(R.drawable.user_info_icon);
                     messageTextView.setText("个人信息填写");
+                    messageTextView.setBackgroundResource(R.drawable.rounded_rect_blue);
+                    messageTextView.setTextColor(ContextCompat.getColor(getContext(),R.color.white));
                     break;
                 case 3:
                     textView.setText("学历证明");
@@ -210,8 +216,12 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
                     utils = Utils.INSTANCE;
                     if (utils.getUserPidNumber(getContext()).equals("")) {
                         messageTextView.setText("需要完成填写个人信息才能进入");
+                        messageTextView.setTextColor(ContextCompat.getColor(getContext(),R.color.black));
+                        messageTextView.setBackgroundResource(0);
                     } else {
                         messageTextView.setText("学历证明照片上传");
+                        messageTextView.setTextColor(ContextCompat.getColor(getContext(),R.color.white));
+                        messageTextView.setBackgroundResource(R.drawable.rounded_rect_blue);
                     }
                     break;
                 default:
@@ -287,16 +297,24 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
 
             if (userPidNumber.equals("")) {
                 messageTextView.setText("需要完成填写个人信息才能进入");
+                messageTextView.setBackgroundResource(0);
+                messageTextView.setTextColor(ContextCompat.getColor(this,R.color.black));
             } else {
                 messageTextView.setText("身份证照片上传");
+                messageTextView.setBackgroundResource(R.drawable.rounded_rect_blue);
+                messageTextView.setTextColor(ContextCompat.getColor(this,R.color.white));
             }
 
             TextView xlzmMessageTextView = (TextView) mViewPager.getChildAt(2).findViewById(R.id.message_textview);
 
             if (userPidNumber.equals("")) {
                 xlzmMessageTextView.setText("需要完成填写个人信息才能进入");
+                xlzmMessageTextView.setBackgroundResource(0);
+                messageTextView.setTextColor(ContextCompat.getColor(this,R.color.black));
             } else {
                 xlzmMessageTextView.setText("学历证明照片上传");
+                xlzmMessageTextView.setBackgroundResource(R.drawable.rounded_rect_blue);
+                messageTextView.setTextColor(ContextCompat.getColor(this,R.color.white));
             }
 
 
@@ -307,7 +325,6 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
 
         } else if (requestCode == 3 && resultCode == RESULT_OK) {
             intent.putExtra("Credential", "学历证明");
-
             intent.putExtra("uri", data.getData());
             startActivity(intent);
         }

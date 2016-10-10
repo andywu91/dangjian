@@ -1,209 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/gray"
-    android:orientation="vertical">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:scaleType="centerCrop"
-        android:background="@drawable/home_page_banner"/>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="420dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/white"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/registration_online"
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:clickable="true">
+            android:layout_height="180dp"
+            android:background="@drawable/home_page_banner"
+            android:scaleType="centerCrop"/>
 
-            <ImageView
-                android:id="@+id/article_icon"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/registration_online" />
-
-            <TextView
-                android:id="@+id/article_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/article_icon"
-                android:text="在线报名"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/article_title"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/article_icon"
-                android:text="副标题、提示、简介......"
-                android:textSize="16dp" />
-
-
-        </RelativeLayout>
-
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="20dp"
-            android:layerType="software"
-            android:layout_marginRight="20dp"
-            android:background="@color/gray" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:orientation="vertical">
 
-
-        <RelativeLayout
-            android:id="@+id/student_info_query"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp"
-            android:clickable="true">
-
-            <ImageView
-                android:id="@+id/article_icon2"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/student_info_query" />
-
-            <TextView
-                android:id="@+id/article_title2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <RelativeLayout
+                android:id="@+id/registration_online"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/article_icon2"
-                android:text="学员信息查询"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:clickable="true">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/article_title2"
+                <ImageView
+                    android:id="@+id/article_icon"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/registration_online"/>
+
+                <TextView
+                    android:id="@+id/article_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/article_icon"
+                    android:text="在线报名"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/article_title"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/article_icon"
+                    android:text="副标题、提示、简介......"
+                    android:textSize="16dp"/>
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/article_icon2"
-                android:text="副标题、提示、简介......"
-                android:textSize="16dp" />
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray"
+                android:layerType="software"/>
 
 
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="20dp"
-            android:layerType="software"
-            android:layout_marginRight="20dp"
-            android:background="@color/gray" />
-
-
-        <RelativeLayout
-            android:id="@+id/examination_place_query"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp">
-
-            <ImageView
-                android:id="@+id/article_icon3"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/examination_place_query" />
-
-            <TextView
-                android:id="@+id/article_title3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <RelativeLayout
+                android:id="@+id/student_info_query"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/article_icon3"
-                android:text="考试地点查询"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:clickable="true">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/article_title3"
+                <ImageView
+                    android:id="@+id/article_icon2"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/student_info_query"/>
+
+                <TextView
+                    android:id="@+id/article_title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/article_icon2"
+                    android:text="学员信息查询"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/article_title2"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/article_icon2"
+                    android:text="副标题、提示、简介......"
+                    android:textSize="16dp"/>
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/article_icon3"
-                android:text="副标题、提示、简介......"
-                android:textSize="16dp" />
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray"
+                android:layerType="software"/>
 
 
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="20dp"
-            android:layerType="software"
-            android:layout_marginRight="20dp"
-            android:background="@color/gray" />
-
-
-        <RelativeLayout
-            android:id="@+id/expense_payment"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp">
-
-            <ImageView
-                android:id="@+id/article_icon4"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/expense_payment" />
-
-            <TextView
-                android:id="@+id/article_title4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <RelativeLayout
+                android:id="@+id/examination_place_query"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/article_icon4"
-                android:text="费用支付"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/article_title4"
+                <ImageView
+                    android:id="@+id/article_icon3"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/examination_place_query"/>
+
+                <TextView
+                    android:id="@+id/article_title3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/article_icon3"
+                    android:text="考试地点查询"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/article_title3"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/article_icon3"
+                    android:text="副标题、提示、简介......"
+                    android:textSize="16dp"/>
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/article_icon4"
-                android:text="副标题、提示、简介......"
-                android:textSize="16dp" />
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray"
+                android:layerType="software"/>
 
 
-        </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/expense_payment"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:id="@+id/article_icon4"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/expense_payment"/>
+
+                <TextView
+                    android:id="@+id/article_title4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/article_icon4"
+                    android:text="费用支付"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/article_title4"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/article_icon4"
+                    android:text="副标题、提示、简介......"
+                    android:textSize="16dp"/>
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
 
 
     </LinearLayout>
 
-
-</LinearLayout>
+</ScrollView>
