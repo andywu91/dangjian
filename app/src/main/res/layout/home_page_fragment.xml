@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/gray">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="180dp"
+        android:background="@drawable/home_page_banner"
+        android:scaleType="centerCrop"/>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:background="@drawable/home_page_banner"
-            android:scaleType="centerCrop"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_height="200dp"
+            android:paddingBottom="10dp"
             android:background="@color/white"
             android:orientation="vertical">
 
@@ -172,9 +173,9 @@
                 android:id="@+id/expense_payment"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="5dp">
 
                 <ImageView
@@ -210,7 +211,9 @@
 
         </LinearLayout>
 
+    </ScrollView>
 
-    </LinearLayout>
 
-</ScrollView>
+
+</LinearLayout>
+

@@ -184,7 +184,7 @@ public class ImproveUserDataActivity extends AppCompatActivity implements View.O
             switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
                 case 2:
                     textView.setText("身份证信息");
-                    imageView.setBackgroundResource(R.drawable.identitiy_card_icon);
+                    imageView.setBackgroundResource(R.drawable.identity_card_icon);
 
                     utils = Utils.INSTANCE;
 

@@ -80,7 +80,7 @@
 
             <EditText
                 android:id="@+id/student_picId_edittext"
-                android:layout_width="320dp"
+                android:layout_width="280dp"
                 android:layout_height="50dp"
                 android:background="@color/gray"/>
 
